@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ListView;
 
 import br.com.alura.agenda.R;
+import br.com.alura.agenda.database.dao.RoomAlunoDao;
 import br.com.alura.agenda.model.Aluno;
 import br.com.alura.agenda.ui.ListaAlunosView;
 
@@ -19,13 +20,15 @@ import static br.com.alura.agenda.ui.activity.ConstantesActivities.CHAVE_ALUNO;
 public class ListaAlunosActivity extends AppCompatActivity {
 
     private static final String TITULO_APPBAR = "Lista de alunos";
-    private final ListaAlunosView listaAlunosView = new ListaAlunosView(this);
+    private RoomAlunoDao dao;
+    private ListaAlunosView listaAlunosView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_alunos);
         setTitle(TITULO_APPBAR);
+        listaAlunosView = new ListaAlunosView(this);
         configuraFabNovoAluno();
         configuraLista();
     }
